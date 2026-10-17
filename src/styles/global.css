@@ -112,3 +112,27 @@ button { cursor: pointer; border: 0; background: none; touch-action: manipulatio
     transition-duration: .01ms !important;
   }
 }
+
+/* ═══════════════════════════════════
+   GLOBAL RESPONSIVE TOKENS
+═══════════════════════════════════ */
+
+/* Tighter nav on very small screens */
+@media (max-width: 360px) {
+  :root { --nav-h: 58px; }
+}
+
+/* Larger screens — slightly more padding */
+@media (min-width: 1536px) {
+  :root { --max-w: 1360px; }
+}
+
+/* Touch: remove tap highlight on interactive elements */
+@media (hover: none) {
+  button, a { -webkit-tap-highlight-color: transparent; }
+}
+
+/* Landscape phones: reduce hero height */
+@media (max-height: 500px) and (orientation: landscape) {
+  :root { --nav-h: 52px; }
+}

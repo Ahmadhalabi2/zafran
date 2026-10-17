@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Star, Clock, Flame, ShoppingCart } from 'lucide-react'
+import { Star, Clock, Flame, ShoppingCart } from 'lucide-react'
 import { items, tagLabel, type Tag } from '../data'
 import { money, useCart } from '../store'
 import DishCard from '../components/DishCard'
@@ -34,10 +34,6 @@ export default function Dish() {
 
   return (
     <main className={s.wrap}>
-      <Link to={`/menu?cat=${encodeURIComponent(dish.cat)}`} className={s.back}>
-        <ArrowLeft size={15} /> {dish.cat}
-      </Link>
-
       <div className={s.detail}>
         {/* Image */}
         <div className={s.imgWrap}>

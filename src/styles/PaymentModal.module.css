@@ -207,3 +207,29 @@
 /* Footer */
 .footer { padding: 12px 24px 18px; border-top: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; gap: 6px; font-size: .72rem; color: var(--c-text-3); flex-shrink: 0; }
 .footerLogo { color: #00C853; font-weight: 700; }
+
+/* ═══════════════════════════════════
+   PAYMENT MODAL — RESPONSIVE
+═══════════════════════════════════ */
+
+/* ── 480px: tighter modal ── */
+@media (max-width: 480px) {
+  .overlay  { padding: 12px; align-items: flex-end; }
+  .modal    { border-radius: var(--radius-xl) var(--radius-xl) 0 0; max-height: 92dvh; }
+  .header   { padding: 16px 18px 14px; }
+  .scLogo   { width: 36px; height: 36px; font-size: 1.1rem; }
+  .scName   { font-size: 1rem; }
+  .countdownRing { width: 44px; height: 44px; }
+  .countdownSvg  { width: 44px !important; height: 44px !important; }
+  .body     { padding: 16px 16px 14px; gap: 14px; }
+  .phoneNumber { font-size: 1.1rem; }
+  .btnConfirm  { font-size: .86rem; min-height: 46px; }
+  .amount      { font-size: 1.5rem; }
+}
+
+/* ── 360px ── */
+@media (max-width: 360px) {
+  .header  { padding: 12px 14px; gap: 8px; }
+  .body    { padding: 12px 12px 12px; gap: 12px; }
+  .summaryRow { font-size: .78rem; }
+}

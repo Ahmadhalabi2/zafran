@@ -71,3 +71,22 @@
 .qtyBtn { width: 28px; height: 28px; border-radius: 50%; background: var(--c-surface); border: 1px solid var(--c-border); color: var(--c-text); display: grid; place-items: center; font-size: .9rem; font-weight: 700; transition: background var(--dur-fast); }
 .qtyBtn:hover { background: var(--c-gold-light); border-color: var(--c-gold-2); color: var(--c-gold-3); }
 .qtyVal { min-width: 22px; text-align: center; font-weight: 700; font-size: .82rem; }
+
+/* ═══════════════════════════════════
+   DISH CARD — RESPONSIVE
+═══════════════════════════════════ */
+
+/* ── 768px: slightly compact ── */
+@media (max-width: 768px) {
+  .name    { font-size: .94rem; }
+  .desc    { font-size: .76rem; }
+  .body    { padding: 10px 12px 12px; gap: 5px; }
+  .addBtn  { height: 30px; padding: 0 11px; font-size: .74rem; }
+}
+
+/* ── 480px: tighter card ── */
+@media (max-width: 480px) {
+  .card:hover { transform: none; }   /* disable lift on touch */
+  .facts   { gap: 6px; font-size: .68rem; }
+  .pricePill { font-size: .76rem; padding: 3px 9px; }
+}

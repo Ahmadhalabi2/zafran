@@ -44,3 +44,45 @@
 
 @media (max-width: 820px) { .layout { grid-template-columns: 1fr; } .summary { position: static; } }
 @media (max-width: 560px)  { .formRow2 { grid-template-columns: 1fr; } .formCard { padding: 20px 16px; } }
+
+/* ═══════════════════════════════════
+   CHECKOUT — RESPONSIVE
+═══════════════════════════════════ */
+
+/* ── 900px ── */
+@media (max-width: 900px) {
+  .layout   { grid-template-columns: 1fr; gap: 20px; }
+  .summary  { position: static; }
+}
+
+/* ── 768px ── */
+@media (max-width: 768px) {
+  .wrap     { padding: 28px clamp(12px,3vw,24px) 64px; }
+  .formCard { padding: 20px 16px; }
+}
+
+/* ── 640px ── */
+@media (max-width: 640px) {
+  .formRow2 { grid-template-columns: 1fr; }
+  .done     { padding: 40px 16px; }
+  .doneTitle { font-size: 1.5rem; }
+  .empty    { padding: 40px 16px; }
+}
+
+/* ── 480px ── */
+@media (max-width: 480px) {
+  .submitBtn  { font-size: .86rem; min-height: 48px; }
+  .totalAmount { font-size: 1.2rem; }
+  .itemImg    { width: 42px; height: 42px; }
+}
+
+/* ── 360px ── */
+@media (max-width: 360px) {
+  .formCard   { padding: 16px 12px; }
+  .wrap       { padding: 20px 12px 56px; }
+}
+
+/* ── 1536px+ ── */
+@media (min-width: 1536px) {
+  .wrap { max-width: 1360px; }
+}

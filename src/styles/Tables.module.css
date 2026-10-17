@@ -153,3 +153,66 @@
 
 @media (max-width: 820px) { .formWrap { grid-template-columns: 1fr; } .tmapFloor { padding-bottom: 100%; } .pricingGrid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .formRow2 { grid-template-columns: 1fr; } .form { padding: 20px 16px; } }
+
+/* ═══════════════════════════════════
+   TABLES — RESPONSIVE
+═══════════════════════════════════ */
+
+/* ── 1024px ── */
+@media (max-width: 1024px) {
+  .formWrap { grid-template-columns: 1fr; }
+  .infoPanel { display: none; }           /* hide side panel; info is in modal */
+}
+
+/* ── 900px ── */
+@media (max-width: 900px) {
+  .pricingGrid  { grid-template-columns: 1fr; gap: 10px; }
+  .tmapFloor    { padding-bottom: 90%; }
+  .tmapSlabel   { font-size: .58rem; padding: 2px 5px; }
+  .selectedCard { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* ── 768px ── */
+@media (max-width: 768px) {
+  .wrap         { padding: 24px clamp(12px,3vw,24px) 64px; }
+  .steps        { gap: 6px; font-size: .78rem; }
+  .stepNum      { width: 26px; height: 26px; font-size: .72rem; }
+  .stepLine     { max-width: 32px; }
+  .tmapFloor    { padding-bottom: 100%; }
+  .tmapLabel.tmapLabelRect  { width: 40px; height: 26px; font-size: .56rem; }
+  .tmapLabel.tmapLabelRound { width: 28px; height: 28px; font-size: .56rem; }
+  .seccards     { grid-template-columns: 1fr; }
+  .filters      { gap: 6px; }
+  .filterBtn    { height: 34px; padding: 0 13px; font-size: .78rem; }
+}
+
+/* ── 640px ── */
+@media (max-width: 640px) {
+  .formRow2     { grid-template-columns: 1fr; }
+  .form         { padding: 18px 14px; }
+  .pricingCard  { padding: 12px 14px; }
+  .tmapFloor    { padding-bottom: 115%; }
+  .tmapLegend   { gap: 10px; font-size: .72rem; }
+  .tmapLegendSep { display: none; }
+  .done         { padding: 40px 16px; }
+  .doneIcon     { width: 68px; height: 68px; font-size: 1.8rem; }
+}
+
+/* ── 480px ── */
+@media (max-width: 480px) {
+  .steps span:not(.stepNum) { display: none; }  /* show only step numbers */
+  .tmapFloor  { padding-bottom: 130%; }
+  .confirmCard { padding: 14px 14px; }
+  .doneTitle  { font-size: 1.5rem; }
+}
+
+/* ── 360px ── */
+@media (max-width: 360px) {
+  .tmapFloor  { padding-bottom: 150%; }
+  .wrap       { padding: 16px 12px 56px; }
+}
+
+/* ── 1536px+ ── */
+@media (min-width: 1536px) {
+  .wrap { max-width: 1360px; }
+}

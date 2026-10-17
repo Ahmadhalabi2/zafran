@@ -159,3 +159,12 @@
   padding: 8px 12px;
   font-size: .82rem;
 }
+
+/* ═══════════════════════════════════
+   CUSTOM SELECT — RESPONSIVE
+═══════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .trigger { min-height: 40px; font-size: .82rem; }
+  .opt     { padding: 8px 11px; font-size: .82rem; }
+}

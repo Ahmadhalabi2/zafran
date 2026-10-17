@@ -1,4 +1,4 @@
-.hero { position: relative; overflow: hidden; padding: 64px clamp(16px,5vw,64px) 72px; background: var(--c-surface); border-bottom: 1px solid var(--c-border); }
+.hero { position: relative; overflow: hidden; padding: 48px clamp(16px,5vw,64px) 64px; background: var(--c-surface); border-bottom: 1px solid var(--c-border); }
 .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(184,134,11,.07), transparent 65%); pointer-events: none; }
 .heroInner { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
 .heroEyebrow { display: inline-flex; align-items: center; gap: 5px; font-size: .7rem; text-transform: uppercase; letter-spacing: .13em; color: var(--c-gold-3); font-weight: 700; margin-bottom: 16px; padding: 4px 11px; border-radius: 999px; background: var(--c-gold-light); border: 1px solid rgba(184,134,11,.2); }
@@ -70,3 +70,66 @@
 .btnCtaOutline:hover { border-color: rgba(255,255,255,.4); color: #fff; background: rgba(255,255,255,.06); }
 
 @media (max-width: 900px) { .heroInner { grid-template-columns: 1fr; } .heroStats { grid-template-columns: 1fr 1fr; } .story { grid-template-columns: 1fr; } .ctaBand { padding: 28px 22px; } }
+
+/* ═══════════════════════════════════
+   ABOUT — RESPONSIVE
+═══════════════════════════════════ */
+
+/* ── 1024px ── */
+@media (max-width: 1024px) {
+  .heroInner  { gap: 36px; }
+  .heroImgGrid { grid-template-rows: 160px 160px; }
+}
+
+/* ── 900px ── */
+@media (max-width: 900px) {
+  .heroInner    { grid-template-columns: 1fr; }
+  .heroVisual   { display: none; }            /* hide image grid on mobile — story section has one */
+  .heroStats    { grid-template-columns: 1fr 1fr; }
+  .story        { grid-template-columns: 1fr; }
+  .storyImg     { aspect-ratio: 16/9; }
+  .ctaBand      { flex-direction: column; align-items: flex-start; padding: 28px 20px; }
+  .ctaBandActions { width: 100%; }
+  .ctaBandActions a { flex: 1; justify-content: center; }
+}
+
+/* ── 768px ── */
+@media (max-width: 768px) {
+  .section      { padding: 40px clamp(14px,3vw,28px); }
+  .heroStats    { gap: 8px; }
+  .infoGrid     { grid-template-columns: 1fr; }
+  .teamGrid     { grid-template-columns: repeat(auto-fill, minmax(min(100%,200px),1fr)); }
+}
+
+/* ── 640px ── */
+@media (max-width: 640px) {
+  .hero         { padding: 36px clamp(14px,4vw,24px) 44px; }
+  .heroTitle    { font-size: clamp(1.8rem,7vw,2.8rem); }
+  .heroStats    { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .heroStat     { padding: 10px 8px; }
+  .heroStatVal  { font-size: 1.4rem; }
+  .teamGrid     { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── 480px ── */
+@media (max-width: 480px) {
+  .heroTitle    { font-size: 1.75rem; }
+  .heroDesc     { font-size: .9rem; }
+  .teamGrid     { grid-template-columns: 1fr; }
+  .sectionTitle { font-size: 1.4rem; }
+  .ctaBandTitle { font-size: 1.3rem; }
+  .storyQuote   { padding: 12px 14px; }
+}
+
+/* ── 360px ── */
+@media (max-width: 360px) {
+  .hero         { padding: 28px 12px 36px; }
+  .heroTitle    { font-size: 1.5rem; }
+  .section      { padding: 28px 12px; }
+}
+
+/* ── 1536px+ ── */
+@media (min-width: 1536px) {
+  .heroInner { max-width: 1360px; }
+  .section   { max-width: 1360px; }
+}

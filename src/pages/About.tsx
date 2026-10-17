@@ -10,15 +10,18 @@ const hours = [
 const team = [
   { name: 'Chef Nasser Al-Khalidi', role: 'Head Chef · 18 years', img: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80' },
   { name: 'Lina Haddad',           role: 'Pastry Chef',           img: 'https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?w=400&q=80' },
-  { name: 'Rami Oweis',            role: 'Head Barista',          img: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&q=80' },
+  { name: 'Rami Oweis',            role: 'Head Barista',          img: 'https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=400&q=80' },
 ]
 
 const foodImgs = [
-  'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80',
-  'https://images.unsplash.com/photo-1558030006-450675393462?w=600&q=80',
-  'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80',
-  'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80',
+  'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80',  // hero large
+  'https://images.unsplash.com/photo-1558030006-450675393462?w=600&q=80',  // hero small 1
+  'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80', // hero small 2
+  'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80', // kept for fallback
 ]
+
+// Story section — restaurant kitchen/chef atmosphere image
+const storyImg = 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80'
 
 const sectionCards = [
   { icon: '📚', name: 'Study Zone',   desc: 'Quiet, fast WiFi, power outlets. Perfect for solo work or duo sessions.',   color: 'rgba(10,132,255,.12)' },
@@ -77,8 +80,8 @@ export default function About() {
       <section className={`${s.section} rv`}>
         <div className={s.story}>
           <div className={s.storyImg}>
-            <img src={foodImgs[3]} alt="Desserts"
-              onError={e => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&q=80' }}
+            <img src={storyImg} alt="Zafran kitchen and dining atmosphere"
+              onError={e => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80' }}
             />
           </div>
           <div className={s.storyText}>

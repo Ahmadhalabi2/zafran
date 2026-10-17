@@ -1,4 +1,4 @@
-.pageHead { position: relative; overflow: hidden; padding: 56px clamp(16px,5vw,64px) 64px; background: var(--c-surface); border-bottom: 1px solid var(--c-border); text-align: center; }
+.pageHead { position: relative; overflow: hidden; padding: 40px clamp(16px,5vw,64px) 48px; background: var(--c-surface); border-bottom: 1px solid var(--c-border); text-align: center; }
 .pageHead::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(184,134,11,.06), transparent 70%); pointer-events: none; }
 .pageHeadInner    { position: relative; z-index: 1; }
 .pageHeadEyebrow  { display: inline-flex; align-items: center; gap: 6px; font-size: .7rem; text-transform: uppercase; letter-spacing: .14em; color: var(--c-gold-3); font-weight: 700; margin-bottom: 12px; }
@@ -33,3 +33,37 @@
 .emptyText { color: var(--c-text-3); font-size: .92rem; }
 .emptyBtn { height: 42px; padding: 0 20px; border-radius: 999px; background: var(--c-gold-light); border: 1.5px solid var(--c-gold-2); color: var(--c-gold-3); font-weight: 700; font-size: .86rem; transition: background var(--dur-fast); }
 .emptyBtn:hover { background: linear-gradient(135deg, var(--c-gold-2), var(--c-gold-3)); color: #fff; }
+
+/* ═══════════════════════════════════
+   MENU — RESPONSIVE
+═══════════════════════════════════ */
+
+/* ── 768px ── */
+@media (max-width: 768px) {
+  .pageHeadTitle  { font-size: clamp(1.8rem,7vw,2.8rem); }
+  .bar            { padding: 10px clamp(12px,3vw,24px); }
+  .tools          { flex-direction: column; }
+  .searchWrap     { flex: 1 1 100%; }
+  .sortSelect     { flex: 1 1 100%; }
+  .grid           { padding: 20px clamp(12px,3vw,24px) 60px; gap: 14px;
+                    grid-template-columns: repeat(auto-fill, minmax(min(100%,240px),1fr)); }
+}
+
+/* ── 640px: tab bar ── */
+@media (max-width: 640px) {
+  .tab      { height: 34px; padding: 0 10px; font-size: .78rem; }
+  .tabCount { padding: 1px 4px; }
+  .chips    { gap: 5px; }
+  .chip     { height: 28px; padding: 0 9px; font-size: .72rem; }
+}
+
+/* ── 480px ── */
+@media (max-width: 480px) {
+  .pageHeadTitle  { font-size: 1.7rem; }
+  .grid           { grid-template-columns: 1fr; }
+}
+
+/* ── 1536px+ ── */
+@media (min-width: 1536px) {
+  .grid { max-width: 1360px; }
+}

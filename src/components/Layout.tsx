@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { ShoppingCart, MapPin, Phone, Mail, Clock, X, ChefHat, Timer } from 'lucide-react'
+import { ShoppingCart, MapPin, Phone, Mail, Clock, X, ChefHat, Timer, Menu as MenuIcon } from 'lucide-react'
 import { useCart, money } from '../store'
 import { useReservation } from '../reservationStore'
 import { Qty } from './DishCard'
@@ -12,12 +12,15 @@ export default function Layout() {
   const { pathname } = useLocation()
   const nav = useNavigate()
 
+  const [mobileOpen, setMobileOpen] = useState(false)
+
   // Show pill when there's a pending reservation and the modal is hidden
   const showPill = resState.reservation?.status === 'pending' && !resState.showPaymentModal
 
   useEffect(() => {
     window.scrollTo(0, 0)
     setOpen(false)
+    setMobileOpen(false)
     const io = new IntersectionObserver(
       es => es.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
@@ -28,11 +31,25 @@ export default function Layout() {
     return () => io.disconnect()
   }, [pathname])
 
+  // Lock body scroll when mobile nav is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
+  const navLinks = [
+    { to: '/',       label: 'Home',    end: true },
+    { to: '/menu',   label: 'Menu',    end: false },
+    { to: '/tables', label: 'Tables',  end: false },
+    { to: '/about',  label: 'About',   end: false },
+  ]
+
   return (
     <div className={s.page}>
+
       {/* ── Nav ─────────────────────────── */}
       <nav className={s.nav}>
-        <Link to="/" className={s.navLogo}>
+        <Link to="/" className={s.navLogo} onClick={() => setMobileOpen(false)}>
           <div className={s.navLogoIcon}>🍽</div>
           <div className={s.navLogoText}>
             <span className={s.navLogoName}>Zafran</span>
@@ -40,19 +57,89 @@ export default function Layout() {
           </div>
         </Link>
 
+        {/* Desktop links */}
         <div className={s.navLinks}>
-          <NavLink to="/" end className={({ isActive }) => `${s.navLink} ${isActive ? s.navLinkActive : ''}`}>Home</NavLink>
-          <NavLink to="/menu"   className={({ isActive }) => `${s.navLink} ${isActive ? s.navLinkActive : ''}`}>Menu</NavLink>
-          <NavLink to="/tables" className={({ isActive }) => `${s.navLink} ${isActive ? s.navLinkActive : ''}`}>Tables</NavLink>
-          <NavLink to="/about"  className={({ isActive }) => `${s.navLink} ${isActive ? s.navLinkActive : ''}`}>About</NavLink>
+          {navLinks.map(l => (
+            <NavLink
+              key={l.to} to={l.to} end={l.end}
+              className={({ isActive }) => `${s.navLink} ${isActive ? s.navLinkActive : ''}`}
+            >{l.label}</NavLink>
+          ))}
         </div>
 
-        <button className={s.navCart} onClick={() => setOpen(true)} aria-label="Open order">
-          <ShoppingCart size={17} />
-          <span>Order</span>
-          {count > 0 && <span className={s.navCartBadge}>{count}</span>}
-        </button>
+        <div className={s.navRight}>
+          <button className={s.navCart} onClick={() => setOpen(true)} aria-label="Open order">
+            <ShoppingCart size={17} />
+            <span className={s.navCartLabel}>Order</span>
+            {count > 0 && <span className={s.navCartBadge}>{count}</span>}
+          </button>
+
+          {/* Hamburger — mobile only */}
+          <button
+            className={`${s.burger} ${mobileOpen ? s.burgerOpen : ''}`}
+            onClick={() => setMobileOpen(v => !v)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+          >
+            <span className={s.burgerBar} />
+            <span className={s.burgerBar} />
+            <span className={s.burgerBar} />
+          </button>
+        </div>
       </nav>
+
+      {/* ── Mobile drawer scrim ──────────── */}
+      <div
+        className={`${s.mobileScrim} ${mobileOpen ? s.mobileScrimShow : ''}`}
+        onClick={() => setMobileOpen(false)}
+        aria-hidden
+      />
+
+      {/* ── Mobile drawer ────────────────── */}
+      <aside
+        className={`${s.drawer} ${mobileOpen ? s.drawerOpen : ''}`}
+        aria-label="Navigation"
+      >
+        <div className={s.drawerHead}>
+          <div className={s.drawerLogo}>
+            <div className={s.navLogoIcon}>🍽</div>
+            <div className={s.navLogoText}>
+              <span className={s.navLogoName}>Zafran</span>
+              <span className={s.navLogoSub}>Restaurant</span>
+            </div>
+          </div>
+          <button className={s.drawerClose} onClick={() => setMobileOpen(false)} aria-label="Close menu">
+            <X size={18} />
+          </button>
+        </div>
+
+        <nav className={s.drawerNav}>
+          {navLinks.map((l, i) => (
+            <NavLink
+              key={l.to} to={l.to} end={l.end}
+              style={{ animationDelay: `${i * 60}ms` }}
+              className={({ isActive }) =>
+                `${s.drawerLink} ${isActive ? s.drawerLinkActive : ''} ${mobileOpen ? s.drawerLinkIn : ''}`
+              }
+              onClick={() => setMobileOpen(false)}
+            >
+              {l.label}
+            </NavLink>
+          ))}
+        </nav>
+
+        <div className={s.drawerFooter}>
+          <button
+            className={s.drawerOrderBtn}
+            onClick={() => { setOpen(true); setMobileOpen(false) }}
+          >
+            <ShoppingCart size={16} />
+            View Order
+            {count > 0 && <span className={s.drawerOrderBadge}>{count}</span>}
+          </button>
+          <p className={s.drawerHours}>Open daily · 10:00 – 00:00</p>
+        </div>
+      </aside>
 
       {/* ── Content ─────────────────────── */}
       <Outlet />

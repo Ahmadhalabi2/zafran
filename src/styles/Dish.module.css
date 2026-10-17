@@ -1,5 +1,5 @@
 .wrap { max-width: var(--max-w); margin: 0 auto; padding: 32px clamp(16px,4vw,48px) 72px; }
-.back { display: inline-flex; align-items: center; gap: 6px; font-size: .84rem; font-weight: 600; color: var(--c-text-3); padding: 6px 13px; border-radius: 999px; border: 1px solid var(--c-border); background: var(--c-surface); margin-bottom: 28px; transition: color var(--dur-fast), border-color var(--dur-fast), background var(--dur-fast); }
+.back { display: none; }
 .back:hover { color: var(--c-gold-3); border-color: var(--c-gold-2); background: var(--c-gold-light); }
 
 .detail { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; }
@@ -41,3 +41,44 @@
 .notFoundBtn  { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 24px; border-radius: 999px; background: linear-gradient(135deg, var(--c-gold-2), var(--c-gold-3)); color: #fff; font-weight: 700; box-shadow: var(--shadow-gold); margin-top: 8px; }
 
 @media (max-width: 820px) { .detail { grid-template-columns: 1fr; } .img { height: 300px; } }
+
+/* ═══════════════════════════════════
+   DISH — RESPONSIVE
+═══════════════════════════════════ */
+
+/* ── 900px ── */
+@media (max-width: 900px) {
+  .detail   { grid-template-columns: 1fr; gap: 24px; }
+  .img      { height: 320px; }
+  .related  { margin-top: 40px; }
+}
+
+/* ── 640px ── */
+@media (max-width: 640px) {
+  .wrap     { padding: 24px clamp(14px,4vw,24px) 56px; }
+  .img      { height: 260px; }
+  .title    { font-size: clamp(1.6rem,7vw,2.4rem); }
+  .price    { font-size: 2rem; }
+  .buy      { flex-direction: column; align-items: stretch; }
+  .qty      { justify-content: center; }
+  .addBtn   { min-height: 48px; }
+  .relatedGrid { grid-template-columns: 1fr; }
+}
+
+/* ── 480px ── */
+@media (max-width: 480px) {
+  .img          { height: 220px; }
+  .meta         { gap: 8px; }
+  .featureFacts { gap: 6px; }
+}
+
+/* ── 360px ── */
+@media (max-width: 360px) {
+  .title  { font-size: 1.5rem; }
+  .price  { font-size: 1.7rem; }
+}
+
+/* ── 1536px+ ── */
+@media (min-width: 1536px) {
+  .wrap { max-width: 1360px; }
+}
